@@ -1,0 +1,32 @@
+# =============================================================================
+# Docker Compose — Agent d'analyse de marché e-commerce
+# =============================================================================
+# Lancement:  docker-compose up --build
+# Arrêt:      docker-compose down
+# Tests:      docker-compose run market-agent pytest tests/ -v
+# =============================================================================
+
+version: "3.8"
+
+services:
+  market-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: market-agent-api
+
+    ports:
+      - "8010:8010"
+
+    env_file:
+      - .env
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8010/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
