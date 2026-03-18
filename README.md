@@ -152,7 +152,7 @@ docker compose down
 
 ## Utilisation de l'API
 
-### Interface Swagger (recommandé)
+### Interface Swagger
 
 Ouvrir **http://localhost:8010/docs** dans un navigateur. L'interface permet de
 tester tous les endpoints directement, avec des exemples pré-remplis.
